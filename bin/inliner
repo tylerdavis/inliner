@@ -2,6 +2,7 @@
 
 var path = require('path'), 
     fs = require('fs'), 
+    existsSync = fs.existsSync || path.existsSync,
     querystring = require('querystring'), 
     util = require('util');
 
@@ -62,7 +63,7 @@ fs.realpath(__filename, function(error, script) {
 
   var url = program.args[0];
 
-  if (path.existsSync(url)) {
+  if (existsSync(url)) {
     // then it's a file
   } else if (url.indexOf('http') !== 0) {
     url = 'http://' + url;
